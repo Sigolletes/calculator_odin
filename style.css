@@ -78,7 +78,6 @@ body {
 	align-items: flex-end;
 	padding: 0 8px;
 	border: 2px solid var(--borders);
-	gap: 0;
 }
 
 #currentOperation {
@@ -119,4 +118,96 @@ body {
 
 .operators {
 	background-color: var(--operators);
+}
+
+
+
+@media (max-width: 450px) {
+	#colors {
+		gap: 20px;
+	}
+	
+	#colors button {
+		font-size: 12px;
+		border: 1px solid var(--display);
+		padding: 5px 15px;
+	}
+
+	#container {
+		width: 300px;
+		height: 400px;
+		padding: 5px;
+		gap: 5px;
+	}
+
+	#display {
+		padding: 0 5px;
+		border: 1px solid var(--borders);
+	}
+
+	#currentOperation {
+		font-size: 18px;
+	}
+	
+	#result {
+		font-size: 30px;
+	}
+	
+	#buttons {
+		gap: 2px;
+	}
+	
+	.bttn {
+		flex: 1 70px;
+		height: 60px;
+		border: 1px solid var(--borders);
+		font-size: 22px;
+	}
+
+	#clear, #delete {
+		flex: 2 140px;
+	}
+}
+
+
+
+@media (max-width: 305px) {
+	
+	#colors button {
+		font-size: 10px;
+		padding: 3px 5px;
+	}
+
+	#container {
+		width: 200px;
+		height: 270px;
+		padding: 3px;
+		gap: 3px;
+	}
+
+	#display {
+		padding: 0 3px;
+	}
+
+	#currentOperation {
+		font-size: 12px;
+	}
+	
+	#result {
+		font-size: 20px;
+	}
+	
+	#buttons {
+		gap: 1px;
+	}
+	
+	.bttn {
+		flex: 1 43px;
+		height: 40px;
+		font-size: 16px;
+	}
+
+	#clear, #delete {
+		flex: 2 86px;
+	}
 }
