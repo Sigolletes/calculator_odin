@@ -52,10 +52,12 @@ body {
 
 #currentOperation {
 	font-size: 23px;
+	overflow: hidden;
 }
 
 #result {
 	font-size: 50px;
+	overflow: hidden;
 }
 
 #buttons {
