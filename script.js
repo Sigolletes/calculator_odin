@@ -252,42 +252,31 @@ function operandButton(oper) {
 // CALCULATOR
 
 function calculator() {
+
     if (operand === "+") {
         num1 = Number(num1) + Number(num2);
-        if (regDot.test(num1)) {
-            num1 = num1.toFixed(2);
-        }
-        num2 = "";
-        operand = "";
-        result.textContent = num1;
+
     } else if (operand === "-") {
         num1 = Number(num1) - Number(num2);
-        if (regDot.test(num1)) {
-            num1 = num1.toFixed(2);
-        }
-        num2 = "";
-        operand = "";
-        result.textContent = num1;
+
     } else if (operand === "*") {
         num1 = Number(num1) * Number(num2);
-        if (regDot.test(num1)) {
-            num1 = num1.toFixed(2);
-        }
-        num2 = "";
-        operand = "";
-        result.textContent = num1;
+
     } else if (operand === "/") {
         num1 = Number(num1) / Number(num2);
-        if (regDot.test(num1)) {
-            num1 = num1.toFixed(2);
-        }
-        num2 = "";
-        operand = "";
-        result.textContent = num1;
     }
 
+    if (regDot.test(num1)) {
+        num1 = num1.toFixed(1);
+    }
+    num2 = "";
+    operand = "";
+    num1 = num1.toString();
+    result.textContent = num1;
+
     if (num1.length >= 10) {
-        result.textContent = exponential(num1);
+        num1 = exponential(num1);
+        result.textContent = num1;
     }
 }
 
@@ -296,5 +285,5 @@ function calculator() {
 // FUNCTION FOR MAKE EXPONENTTIAL NUMBERS
 
 function exponential(num) {
-    return parseFloat(num).toExponential(4);
+    return parseFloat(num).toExponential(1);
 }
