@@ -253,12 +253,20 @@ function operandButton(oper) {
         register = register.substring(3);
     }
 
-    if (operand !== "" && num2 !== "" && num1 !== "") {
+    if (num2 === "" && num1 !== "" && operand !== "") {   
+            operand = oper;
+            register = register.slice(0, -3);
+            register += ` ${oper} `;
+            currentOperation.textContent = register;
+            result.textContent = num1;
+
+        } else if (operand !== "" && num2 !== "" && num1 !== "") {
         calculator();
         operand = oper;
         register += ` ${oper} `;
         currentOperation.textContent = register;
         result.textContent = num1;
+        
     } else if (num2 === "" && num1 !== "" && operand === "") {
         operand = oper;
         register += ` ${oper} `;
