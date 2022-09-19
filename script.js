@@ -51,22 +51,27 @@ clear.addEventListener("click", () => {
 });
 
 dlt.addEventListener("click", () => {
-    if (num1.length === 1 && num2 === "") {
-        num1 = "0";
+    if (num1.length === 1 && num2 === "" && operand === "") {
+        num1 = "";
         register = "0";
         currentOperation.textContent = register;
         result.textContent = "0";
-    } else if (num2.length === 1 && num1 !== "") {
-        num2 = "0";
+    } else if (num2 === "" && num1 !== "" && operand !== "") {
+        operand = "";
+        register = register.slice(0, -3);
+        currentOperation.textContent = register;
+        result.textContent = num1;
+    } else if (num2.length === 1 && num1 !== "" && operand !== "") {
+        num2 = "";
         register = register.slice(0, -1);
         currentOperation.textContent = register;
         result.textContent = "0";
-    }  else if (num1 !== "" && num2 === "") {
+    } else if (num1 !== "" && num2 === "" && operand === "") {
         num1 = num1.slice(0, -1);
         register = register.slice(0, -1);
         currentOperation.textContent = register;
         result.textContent = result.textContent.slice(0, -1);
-    } else if (num1 !== "" && num2 !== "") {
+    } else if (num1 !== "" && num2 !== "" && operand !== "") {
         num2 = num2.slice(0, -1);
         register = register.slice(0, -1);
         currentOperation.textContent = register;
@@ -105,7 +110,7 @@ equal.addEventListener("click", () => {
 // DOT FOR DECIMALS
 
 dot.addEventListener("click", () => {
-    if (operand === "" && num2 === "" && num1 !== "" && num1.length <= 5 && !regDot.test(num1)) {
+    if (operand === "" && num2 === "" && num1 !== "" && num1.length <= 9 && !regDot.test(num1)) {
         num1 += ".";
 
         register += ".";
@@ -113,7 +118,7 @@ dot.addEventListener("click", () => {
 
         result.textContent += ".";
 
-    } else if (num1 !== "" && operand !== "" && num2 !== "" && num2.length <= 5 && !regDot.test(num2)) {
+    } else if (num1 !== "" && operand !== "" && num2 !== "" && num2.length <= 9 && !regDot.test(num2)) {
         num2 += ".";
 
         register += ".";
@@ -143,17 +148,32 @@ dot.addEventListener("click", () => {
 
 zero.addEventListener("click", () => {
 
-    if (operand === "" && num2 === "" && num1 !== "" && num1.length <= 6) {
+    if (operand === "" && num2 === "" && num1 === "" && register === "0") {
+        num1 = "0.";
+        register = "0.";
+        currentOperation.textContent = register;
+        result.textContent = "0.";
+    } else if (operand === "" && num2 === "" && num1 !== "" && num1.length <= 10) {
         num1 += "0";
         register += "0";
         currentOperation.textContent = register;
         result.textContent += "0";
-    } else if (num1 !== "" && operand !== "" && num2 !== "" && num2.length <= 6) {
+    } else if (num1 !== "" && operand !== "" && num2 !== "" && num2.length <= 10) {
         num2 += "0";
         register += "0";
         currentOperation.textContent = register;
         result.textContent += "0";
-    }   
+    } else if (num1 === "") {
+        num1 = "0.";
+        register += "0.";
+        currentOperation.textContent = register;
+        result.textContent = "0.";
+    } else if (num1 !== "" && operand !== "" && num2 === "") {
+        num2 = "0.";
+        register += "0.";
+        currentOperation.textContent = register;
+        result.textContent = "0.";
+    } 
 });
 
 one.addEventListener("click", () => {
@@ -206,7 +226,7 @@ function numberButton(num) {
         register = num;
         currentOperation.textContent = register;
         result.textContent = num;
-    } else if (operand === "" && num2 === "" && num1.length <= 6) {
+    } else if (operand === "" && num2 === "" && num1.length <= 10) {
         num1 += num;
         register += num;
         currentOperation.textContent = register;
@@ -216,7 +236,7 @@ function numberButton(num) {
         register += num;
         currentOperation.textContent = register;
         result.textContent = num;
-    }  else if (num1 !== "" && operand !== "" && num2.length <= 6) {
+    }  else if (num1 !== "" && operand !== "" && num2.length <= 10) {
         num2 += num;
         register += num;
         currentOperation.textContent = register;
@@ -239,7 +259,7 @@ function operandButton(oper) {
         register += ` ${oper} `;
         currentOperation.textContent = register;
         result.textContent = num1;
-    } else if (num2 === "" && num1 !== "") {
+    } else if (num2 === "" && num1 !== "" && operand === "") {
         operand = oper;
         register += ` ${oper} `;
         currentOperation.textContent = register;
