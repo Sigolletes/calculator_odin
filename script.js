@@ -53,14 +53,9 @@ clear.addEventListener("click", () => {
 dlt.addEventListener("click", () => {
     if (num1.length === 1 && num2 === "" && operand === "") {
         num1 = "";
-        register = "0";
+        register = register.slice(0, -1);
         currentOperation.textContent = register;
         result.textContent = "0";
-    } else if (num2 === "" && num1 !== "" && operand !== "") {
-        operand = "";
-        register = register.slice(0, -3);
-        currentOperation.textContent = register;
-        result.textContent = num1;
     } else if (num2.length === 1 && num1 !== "" && operand !== "") {
         num2 = "";
         register = register.slice(0, -1);
@@ -301,6 +296,8 @@ function calculator() {
     operand = "";
     num1 = num1.toString();
     result.textContent = num1;
+console.log(num2);
+console.log(operand);
 
     if (num1.length >= 10) {
         num1 = exponential(num1);
