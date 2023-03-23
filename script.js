@@ -319,34 +319,23 @@ function exponential(num) {
 
 // VARIABLES
 
-const root = document.querySelector(":root");
-const blue = document.querySelector("#blue");
-const pink = document.querySelector("#pink");
+const light = document.querySelector("#light");
+const dark = document.querySelector("#dark");
 
 
 
 // COLOR MODES
 
-pink.addEventListener("click", () => {
-    root.style.setProperty("--numbers", "#8ac5be");
-    root.style.setProperty("--operators", "#eea2c3");
-    root.style.setProperty("--other", "#dfd1a2");
-    root.style.setProperty("--display", "#f3dce7");
-    root.style.setProperty("--borders", "#47082a");
-    root.style.setProperty("--background", "#73124f");
-    root.style.setProperty("--letters", "#36012b");
-    root.style.setProperty("--back", "#8c596c");
+document.body.classList.add("light");
+
+light.addEventListener("click", () => {
+    document.body.classList.add("light");
+    document.body.classList.remove("dark");
 });
 
-blue.addEventListener("click", () => {
-    root.style.setProperty("--numbers", "#85e0e0");
-    root.style.setProperty("--operators", "#66b3ff");
-    root.style.setProperty("--other", "#f0c5a8");
-    root.style.setProperty("--display", "#fff0e6");
-    root.style.setProperty("--borders", "#0f1d3e");
-    root.style.setProperty("--background", "#193167");
-    root.style.setProperty("--letters", "#0a1429");
-    root.style.setProperty("--back", "#266073");
+dark.addEventListener("click", () => {
+    document.body.classList.add("dark");
+    document.body.classList.remove("light");
 });
 
 
